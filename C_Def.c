@@ -1,22 +1,25 @@
-/*___C instruction___*/
+/*___C instruction___:
+Some instructions for C programming language
+*/
+/*___List___:
+1-Volatile Variable.
+2-Void Pointer.
+*/
 
-/*
-///Volatile Variable///
-///Introduction:
+/*1-Volatile Variable.
+Introduction:
 The Volatile used to inform the compiler
 that the variable value can be changed any
 time without any task given by the source code.
-///Syntax:
+Syntax:
 volatile data_type variable_name;
 volatile data_type *variable_name;
-///Example:
+Example:
 */
 volatile int x;
 volatile int *a;
-
-/*
-///Void pointer///
-//Introduction:
+/*2-Void Pointer.
+Introduction:
 Till now, we have studied that the address assigned
 to a pointer should be of the same type as specified
 in the pointer declaration. For example, if we declare
@@ -29,9 +32,9 @@ type, we can assign the address of any data type to
 the void pointer, and a void pointer can be assigned to
 any type of the pointer without performing any explicit 
 typecasting.
-///Syntax:
+Syntax:
 void *pointer name;
-///Example:
+Example:
 */
 void *ptr; //void pointer declaration
 int i=9; //integer variable initialization
