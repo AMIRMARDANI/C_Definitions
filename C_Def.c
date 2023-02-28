@@ -4,7 +4,15 @@ Some instructions for C programming language
 /*___List___:
 1-Volatile Variable.
 2-Void Pointer.
+3-Interrupt Latency.
 */
+
+/*Template Name List.
+Introduction:
+Syntax:
+Example:
+*/
+
 
 /*1-Volatile Variable.
 Introduction:
@@ -46,17 +54,109 @@ ptr = p; //correct
 ptr = fp;//correct
 ptr = &i;
 
+/*3-Interrupt Latency.
+Introduction:
+Interrupt latancy is the time that elapses
+between the occurrence of an interrupt and
+execution of the first instruction of the
+interrupt service routine (ISR) that handles
+the interrupt
+Or:
+Interrupt latancy is the time from the assertion of a hardware interrupt until the first instruction of the device driver's interrupt
+handler is executed.
+Syntax:
+Example:
 
+Interrupt occurs               Interrupt handler runs                      Interrupt handler finishes                    Interrupt process continues execution
+........|<..............(Til)...............>|<..............(Tint)........................>|<...................(Tiret)........................>|.........................................>Time
 
-
-
-
-
-#Interrupts (latancy, process,...)
-/*
-please read below example about Interrupts:
-
+Til: interrupt latancy
+Tint: interrupt processing time
+Tiret: interrupt termination time
 */
+
+/*
+4-printf() and scanf() functions
+Description:
+printf(): used to print: integer, character, float and string values on the screen:
+%d: is format specifier used to print an integer value.
+%s: string.
+%c: character.
+%f: floating point value.
+scanf(): used to take input from the user.
+Example:
+*/
+#include <stdio.h>
+int main(){
+	int number;
+	printf("enter a number:");
+	scanf("%d", &number);
+	printf("cube of the number is: %d", number*number*number);
+	return;
+}
+
+/*
+5- Difference between local variable and global variable:
+Description:
+Basic for comparision | Local variable  | Global variable |
+-----------------------------------------------------------
+Declaration:          | inside function | outside function|
+					  |	or block        | or block        |
+-----------------------------------------------------------
+Scope:                | available within| available       |
+                      |  a function     | throughout the  |
+                      |                 | program		  |
+-----------------------------------------------------------					  
+Access:               | Inside the func | Entire program  |
+-----------------------------------------------------------
+Life:                 | Func start      | Program Execute |
+					  |	until exit func |                 |
+-----------------------------------------------------------
+Srorage:              | Stack unless    | Compiler decide |
+					  |	Specified       | storage location|
+-----------------------------------------------------------
+Example:
+*/
+int x1=10; //Global Variable
+void function1(){
+int x2=20; //Local Variable
+}
+
+/*
+5- Difference between call by value and call by reference:
+Description:
+Basic for comparision | Call by value   | Call by ref     |
+-----------------------------------------------------------
+Declaration:          | When a copy of  | When a copy of  |
+					  |	value passed to | value passed to |
+					  |	the function,	| the function,   |
+					  |	then the orginal| then the orginal|
+					  | value is not	| value is        |
+					  |	modified		| modified        |
+-----------------------------------------------------------
+Memory Location:      | actual argument | actual argument |
+                      | &formal argument| &formal argument|
+                      | are created in  | are created in  |
+                      | separate memory | same memory     |
+                      | location        | location        |
+-----------------------------------------------------------					  
+Safety:               | Actual arguments| Actual arguments|
+                      | remain safe     | are not reliable|
+-----------------------------------------------------------
+Arguments:            | The copies of   | The addresses of|
+					  |	the actual      | actual arguments|
+					  |	arguments are	| are passed to   |
+					  |	passed to the   | their respective|
+					  | formal arguments| formal arguments|
+-----------------------------------------------------------
+Example:
+*/
+#include <stdio.h>
+void change(int,int);
+int main()
+{
+	int a=10, b=
+}
 
 #Address mapping
 /*
