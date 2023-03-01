@@ -101,19 +101,19 @@ Description:
 Basic for comparision | Local variable  | Global variable |
 -----------------------------------------------------------
 Declaration:          | inside function | outside function|
-					  |	or block        | or block        |
+		      |	or block        | or block        |
 -----------------------------------------------------------
 Scope:                | available within| available       |
                       |  a function     | throughout the  |
-                      |                 | program		  |
+                      |                 | program         |
 -----------------------------------------------------------					  
 Access:               | Inside the func | Entire program  |
 -----------------------------------------------------------
 Life:                 | Func start      | Program Execute |
-					  |	until exit func |                 |
+		      |	until exit func |                 |
 -----------------------------------------------------------
 Srorage:              | Stack unless    | Compiler decide |
-					  |	Specified       | storage location|
+		      |	Specified       | storage location|
 -----------------------------------------------------------
 Example:
 */
@@ -128,11 +128,11 @@ Description:
 Basic for comparision | Call by value   | Call by ref     |
 -----------------------------------------------------------
 Declaration:          | When a copy of  | When a copy of  |
-					  |	value passed to | value passed to |
-					  |	the function,	| the function,   |
-					  |	then the orginal| then the orginal|
-					  | value is not	| value is        |
-					  |	modified		| modified        |
+		      |	value passed to | value passed to |
+		      |	the function,	| the function,   |
+		      |	then the orginal| then the orginal|
+		      | value is not	| value is        |
+		      |	modified	| modified        |
 -----------------------------------------------------------
 Memory Location:      | actual argument | actual argument |
                       | &formal argument| &formal argument|
@@ -144,10 +144,10 @@ Safety:               | Actual arguments| Actual arguments|
                       | remain safe     | are not reliable|
 -----------------------------------------------------------
 Arguments:            | The copies of   | The addresses of|
-					  |	the actual      | actual arguments|
-					  |	arguments are	| are passed to   |
-					  |	passed to the   | their respective|
-					  | formal arguments| formal arguments|
+		      |	the actual      | actual arguments|
+		      |	arguments are	| are passed to   |
+		      |	passed to the   | their respective|
+		      | formal arguments| formal arguments|
 -----------------------------------------------------------
 Example:
 */
