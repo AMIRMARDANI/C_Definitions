@@ -151,12 +151,153 @@ Arguments:            | The copies of   | The addresses of|
 -----------------------------------------------------------
 Example:
 */
+//call by values:
 #include <stdio.h>
 void change(int,int);
 int main()
 {
-	int a=10, b=
+	int a=10, b=20;
+	change(a,b); //calling a function by passing the values of variable
+	printf("value of a is:%d", a);
+	printf("\n");
+	printf("value of b is:%d",b);
+	return 0;
 }
+void change(int x, int y)
+{
+	x=13;
+	y=17;
+}
+///-----> The output:
+///value of a is: 10
+///value of b is: 20
+
+//call by reference:
+#include <stdio.h>
+void change(int*, int*);
+int main()
+{
+	int a=10, b=20;
+	change(&a,&b); //calling a function by passing references of variables.
+	printf("value of a is:%d",a);
+	printf("\n");
+	printf("value of b is:%d",b);
+	return 0;
+}
+void change(int*x, int*y)
+{
+	*x=13;
+	*y=17;
+}
+///-----> The output:
+///value of a is: 13
+///value of b is: 17
+
+/*
+6-Recursion
+Description:
+When a function calls itself, so this process is known as recurion,
+the function that calls itself known as a recursive function
+recursive function comes in two phases:
+1-Winding phase : When the recursive function calls itself, and this phase ends when the condition is reached
+2-Unwinding phase : starts when the condition is reached, and the control returns to the original call.
+Example:
+*/
+#include <stdio.h>
+int calculate_fact(int);
+int main()
+{
+	int n=5, f;
+	f = calculate_fact(n); // calling a function
+	printf("factorial of a number is %d",f);
+	return 0;
+}
+int calculate_fact(int a)
+{
+	if (a==1)
+	{
+		return 1;
+	}
+	else
+		return a*calculate_fact(a-1);
+}
+///-----> The output:
+///factorial of a number is 120
+
+/*
+7-array
+Description:
+An array is a group of similar types of elements.
+It has a contiguous memory location.
+it optimize the code, it easy to traverse and sort.
+The size and type of arrays cannot be changed after its declaration
+arrays are two types:
+- One-dimensional : Stores the elements one after the another
+  Syntax: data_type array_name[size];
+- multi-dimensional: contains more than one array
+  Syntax: datatype array_name[size];
+Example:
+*/
+int main()
+{
+	int arr[5]={1,2,3,4,5};
+	for (int i=0;i<5;i++)
+	{
+		printf("%d",arr[i]);
+	}
+	return 0;
+}
+///-----> The output:
+///1 2 3 4 5
+
+/*
+8-pointer
+Description:
+a pointer is a variable that refers to the address of a value,
+whenever a variable is declared inside a program, then the systemallocates
+some memory to a variable. The memory contains some address number.
+The variables that holds this address number is known as the
+pointer variable.
+Advantage: optimize code, make performance fast
+Usage of pointers:
+-Accessing array elements.
+-Dynamic memory allocation.
+-Call by reference.
+-Data Structures like a tree, graph, linked list, etc.
+Syntax:
+Data_type *p //p is a pointer variable that holds the address number of a given data type value
+Example:
+*/
+#include <stdio.h>
+int main()
+{
+	int *p; pointer of type integer
+	int a=5;
+	p = &a;
+	printf("Address value of 'a' variable is %u",p);
+	return 0;
+}
+///-----> The output:
+///Address value of 'a' variable is 428781252
+
+/*
+9-NULL pointer
+Description:
+a pointer that doesn't refer to any address of value but NULL is known
+as a NULL pointer. When we assign a '0' value to a pointer of any type,
+then it becomes a Null pointer.
+Example:
+*/
+int *p=NULL;
+
+/*
+9-far pointer
+Description:
+a pointer which can access all the 16 segments (whole residence memory)
+of RAM is known as far pointer. A far pointer is a 32-bit pointer that
+obtains information outside the memory in a given section
+Example:
+*/
 
 #Address mapping
 /*
