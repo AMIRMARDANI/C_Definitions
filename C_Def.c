@@ -299,6 +299,128 @@ obtains information outside the memory in a given section
 Example:
 */
 
+/*
+10-dangling pointer
+Description:
+If a pointer is pointing any memory location, but meanwhile another pointer deletes
+the memory occupied by the first pointer while the first pointer still points to that
+memory location, the first pointer will be known as a dangling pointer. This problem
+is known as a dangling pointer problem.
+Dangling pointer arises when an object is deleted without modifying the value of
+the pointer. The pointer points to the deallocated memory.
+Example:
+In the below example, initially memory is allocated to the pointer variable ptr,
+and then the memory is deallocated from the pointer variable. now,
+pointer variable, i.e, ptr become a dangling pointer
+How to overcome the problem of a dangling pointer?
+by assing a NULL value to the dangling pointer and
+this means that ptr does not point to any memory location
+*/
+#include <stdio.h>
+void main()
+{
+	int *ptr = malloc(constant value);//allocating a memory space.
+	free(ptr); //ptr becomes a dangling pointer.
+	ptr = NULL; //Now, ptr is no longer a dangling pointer
+}	
+
+/*
+11-pointer to pointer
+Description:
+It means, one pointer refers to the address of another pointer.
+pointer to pointer is a chain of pointers, generally, the pointer
+contains the address of a variable. the pointer to pointer contains
+the address of a first pointer.
+Example1:
+In the bellow example, pptr is a double pointer pointing to the 
+address of the ptr variable and ptr points to the address of 'a' variable.
+*/
+#include<stdio.h>  
+void main ()  
+{  
+    int a = 10;  
+    int *p;  
+    int **pp;   
+    p = &a; // pointer p is pointing to the address of a  
+    pp = &p; // pointer pp is a double pointer pointing to the address of pointer p  
+    printf("address of a: %x\n",p); // Address of a will be printed   
+    printf("address of p: %x\n",pp); // Address of p will be printed  
+    printf("value stored at p: %d\n",*p); // value stoted at the address contained by p i.e. 10 will be printed  
+    printf("value stored at pp: %d\n",**pp); // value stored at the address contained by the pointer stoyred at pp  
+}  
+///-----> The output:
+///address of a: d26a8734
+///address of p: d26a8738
+///value stored at p: 10
+///value stored at pp: 10
+/*
+Example2:
+As you can see in the below example, p2 contains the address of p (fff2),
+and p contains the address of number variable (fff4).
+
+fff0 |     |      |
+-----|-----|------|
+fff2 |fff2 |      |
+-----|-----|------|
+p2   |fff4 |fff4  |
+-----|-----|------|
+     |p    |50    |
+-----|-----|------|
+     |     |number|	 
+*/
+#include<stdio.h>  
+int main(){  
+int number=50;      
+int *p;//pointer to int    
+int **p2;//pointer to pointer        
+p=&number;//stores the address of number variable      
+p2=&p;    
+printf("Address of number variable is %x \n",&number);      
+printf("Address of p variable is %x \n",p);      
+printf("Value of *p variable is %d \n",*p);      
+printf("Address of p2 variable is %x \n",p2);      
+printf("Value of **p2 variable is %d \n",*p);      
+return 0;  
+}  
+///-----> The output:
+///Address of number variable is fff4
+///Address of p variable is fff4
+///Value of *p variable is 50
+///Address of p2 variable is fff2
+///Value of **p variable is 50	
+
+/*
+12-Static memory allocation
+Description:
+- in case of static memory allocation, memory is allocated at compile
+  time, and memory can't be increased while executing the program.
+  it is used in the array.
+- lifetime of a variable in static memory is the lifetime of a program.
+- static memory is allocated using static keyword.
+- The static memory is implemented using stacks or heap.
+- The pointer is required to access the variable present in the static memory.
+- The static memory is faster than dynamic memory.
+- In static memory, more memory space is required to store the variable.
+Example:
+*/
+int a[10];
+
+/*
+12-Dynamic memory allocation
+Description:
+- in case of static memory allocation, memory is allocated at run
+  time, and memory can be increased while executing the program.
+  it is used in the linked list.
+- The malloc() or calloc() function is required to allocate the memory at the runtime
+- An allocation or deallocation of memory is done at the execution time of a program.
+- No dynamic pointers are required to access the memory.
+- The dynamic memory is implemented using data segments.
+- Less memory space is required to store the variable.
+Example:
+The bellow example allocates the memory at runtime.
+*/
+int *p = malloc(sizeof(int)*10); 
+
 #Address mapping
 /*
 please read below example about Address maping:
