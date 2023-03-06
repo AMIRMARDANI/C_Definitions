@@ -406,20 +406,248 @@ Example:
 int a[10];
 
 /*
-12-Dynamic memory allocation
+13-Dynamic memory allocation
 Description:
-- in case of static memory allocation, memory is allocated at run
-  time, and memory can be increased while executing the program.
+ - in case of static memory allocation, memory is allocated at run
+   time, and memory can be increased while executing the program.
   it is used in the linked list.
-- The malloc() or calloc() function is required to allocate the memory at the runtime
-- An allocation or deallocation of memory is done at the execution time of a program.
-- No dynamic pointers are required to access the memory.
-- The dynamic memory is implemented using data segments.
-- Less memory space is required to store the variable.
+ - The malloc() or calloc() function is required to allocate the memory at the runtime
+ - An allocation or deallocation of memory is done at the execution time of a program.
+ - No dynamic pointers are required to access the memory.
+ - The dynamic memory is implemented using data segments.
+ - Less memory space is required to store the variable.
+Functions:
+-malloc():
+ - the malloc() function is used to allocate the memory during
+   the execution of the program
+ - it does not initialize the memory but carries the garbage value.
+ - it returns a null pointer if it could not be able to allocate
+   the requested space
+ -syntax:
+  ptr = (cast-type*) malloc(byte-size) // allocating the memory using malloc() function.
+-calloc():
+ - The calloc() is same as malloc() function, but the difference
+	only is that it inilializes the 
 Example:
 The bellow example allocates the memory at runtime.
 */
 int *p = malloc(sizeof(int)*10); 
+
+
+/*
+14-structure
+Description:
+- the structure is a user-defined data type that allows
+  storing multiple types of data in a single unit. It 
+  occupies the sum of the memory of all members.
+- the structure members can be accessed only through structure variables
+- structure variables accessing the same structure but the memory
+  allocated for each variable will be different
+
+Syntax:
+ struct sturct_name
+ {
+	 Member_variable1;
+	 Member_variable2;
+	 .
+	 .
+ } [structure variables];
+
+Example:
+*/
+#include <stdio.h>
+struct student
+{
+	char name[10]; //structure members declaration.
+	int age;
+}s1; //structure variabel
+int main()
+{
+	printf("Enter the name");
+	scanf("%s",s1.name);
+	printf("\n");
+	printf("Enter the age");
+	scanf("%d",&s1.age);
+	printf("\n");
+	printf("Name and age of a student: %s,%d",s1.name,s1.age);
+	return 0;
+	
+}
+///-----> The output:
+///Enter the name Amir
+///Enter the age 26
+///Name and age of a student: Amir,26  
+
+/*
+15-union
+Description:
+	-The union is a user-defined data type that allows sroting
+	multiple types of data in a single unit. However,
+	it doesn't occupy the sum of the memory of all members,
+	it holds the memory of the largest member only.
+	- In union, we can  access only one variable at
+	a time as is allocates one common space for all the 
+	members of a union.
+
+Syntax:
+	union union_name
+	{
+		Member_variable1;
+		Member_variable2;
+		.
+		.
+		Member_variable_n;
+	}[union variables];
+
+Example:
+In bellow example, the value of a and b gets corrupted,
+and only variable ch shows the actual output. This is 
+because all the numbers of a union share the common 
+memory space. Hence, the variable ch whose value is 
+currently updated.
+*/
+#include <stdio.h>
+union data
+{
+	int a; //union members declaration.
+	float b;
+	chat ch;
+};
+int main()
+{
+	union data d; // union variable
+	d.a = 3;
+	d.b = 5.6;
+	d.ch = 'a';
+	printf("value of a is %d",d.a);
+	printf("\n");
+	printf("value of b is %f",d.b);
+	printf("\n");
+	printf("value of ch is %d",d.ch);
+	return 0;
+	
+}
+///-----> The output:
+///value of a is 1085485921
+///value of b is 5.600022
+///value of ch is a  
+
+/*
+16-union
+Description:
+In C, every local variable of a function is known as an automatic (auto) variable.
+variable. Variables which are declared inside the function block are known as a
+local variable. The local variables are also known as an auto variable. It is
+optional to use an auto keyword before the data type of a variable. If no value
+is stored in the local variable, then it consists of a garbage value. 
+Example:
+
+*/
+
+/*
+16-purpose of sprintf() function
+Description:
+The sprintf() stands for "string print". The sprintf()
+function does not print the output on the console screen.
+It transfers the data to the buffer. It returns the total
+numbers of characters present in the string.
+Syntax:
+	int sprintf(char *str, const char *format,...);
+Example:
+
+*/
+#include<stdio.h>
+int main()
+	{
+		char a[20];
+		int n=sprintf(a,"javaToint");
+		printf("value of n is %d",n);
+		return 0;
+	}
+///-----> The output:
+///value of n is 9
+/*
+17-can we Compile program without main() function?
+Description:
+Yes, we can compile but it can't be executed.
+but if we use #define, we can compile and run a c program without
+using the main() function.
+Example:
+*/
+#include <stdio.h>
+#define start main
+void start ()
+{
+	print("Hello");
+}
+
+/*
+18-command line argument
+Description:
+The argument passed to the main() function while executing
+the program is known as command line argument
+Example:
+*/
+main (int count, char *args[]){
+//code to be executed
+}
+
+/*
+19-difference between getch() and getche()
+Description:
+getch() function: reads a single character from the keyboard.
+It doesn't use any buffer, so entered data will not be 
+displayed on the output screen.
+getche() function: reads a single character from the keyboard.
+but data is displayed on the output screen. press Alt+f5
+to see the entered character displayed on the output screen.
+Example:
+in below example, the value entered through a getch() function
+is not displayed on the screen while the value entered through
+a getche() function is displayed on the screen.
+*/
+#include <stdio.h>
+#include <conio.h>
+int main()
+{
+	char ch;
+	printf ("Enter a character");
+	ch = getch(); //taking an user input without printing the value
+	printf("\nvalue of ch is %c",ch);
+	printf("\nEnter a character again");
+	ch = getche();//taking an user input and then displayed it on the screen
+	printf("\nvalue of ch is %c",ch);
+	return 0;
+}
+///-----> The output:
+///Enter a character
+///value of ch is a
+///Enter a character again a
+///value of ch is a
+
+/*
+20-difference between near, far and huge pointer
+Description:
+A virtual address is composed of the selector and offset.
+
+A given logical address consists of two parts:
+Segment Identifier and an Offset.
+
+Segment Identifier is a 16-bit field which we call as
+Segment Selector and Offset is a 32-bit field.
+
+" Think of Segment Identifier as a Street Address in a town
+and offset is a number which will tell you at which position
+the house you are looking for is located
+ Now this city has many streets with unique Street Address
+ or we can say have a unique segment Identifier and
+ have an offset for the specific house (data/instruction)
+ of your interest"
+"
+
+Example:
+
+*/
 
 #Address mapping
 /*
@@ -432,3 +660,6 @@ please read below example about Address maping:
 please read below example about Structure size:
 
 */
+
+
+
