@@ -644,10 +644,121 @@ the house you are looking for is located
  have an offset for the specific house (data/instruction)
  of your interest"
 "
-
+With this introduction so:
+A near pointer doesn't have explicit selector whereas
+far, and huge pointers have explicit sector. When you
+perform pointer arithmetic on the far pointer, the 
+selector is not modified, but in case of a huge pointer,
+it can be modified.
+These are the nonstandard keywords and implementation
+specific. these are irrelevant in a modern platform
 Example:
+*/
+
+/*
+21-maximun length of an identifier
+Description:
+It's 32 characters ideally but implementation specific
+Example:
+*/
+
+/*
+21-typecasting
+Description:
+the typecasting is a process of converting one data type
+into another is known as typecasting. If we want to store
+the floating type value to an int type, then we will convert
+the data type into another data type explicity
+Syntax:
+(type_name) expression;
+*/
+
+/*
+21-Access the array using a pointer
+Description:
+By holding the base address of array into a pointer,
+we can access the array using a pointer
+(type_name) expression;
+Example:
+*/
+//Example 1: Access the array elements using a pointer
+#include <stdio.h>
+int main()
+{
+	int p[5] = {8,9,10,11,12}, i;
+	int *ptr = p;
+	for (i=0; i<5; i++)
+		printf("&p[%d] = %p \t p[%d] = %d\n", i, ptr+i, i, *(ptr+i));
+	return 0;
+}
+///-----> The output:
+///&p[0] = 0x7ffeafbc9190	 p[0] = 8
+///&p[1] = 0x7ffeafbc9194	 p[1] = 9
+///&p[2] = 0x7ffeafbc9198	 p[2] = 10
+///&p[3] = 0x7ffeafbc919c	 p[3] = 11
+///&p[4] = 0x7ffeafbc91a0	 p[4] = 12
+
+//Example 2: Modifying elements of array using pointer
+int main ()
+{
+	int p[5] = {8,9,10,11,12}, i;
+	int *ptr = p;
+	*(ptr+3) = 16;
+	for (i=0; i<5; i++)
+		printf ("&p[%d] = %p \t p[%d] = %d\n", i, ptr+i, i, *(ptr+i));
+	return 0;	
+}
+///-----> The output:
+///&p[0] = 0x7ffef151f3c0	 p[0] = 8
+///&p[1] = 0x7ffef151f3c4	 p[1] = 9
+///&p[2] = 0x7ffef151f3c8	 p[2] = 10
+///&p[3] = 0x7ffef151f3cc	 p[3] = 16
+///&p[4] = 0x7ffef151f3d0	 p[4] = 12
+/*
+22-Infinite For Loop
+Description:
+Infinite For Loop:
+
+	for(;;){
+	}
+
+Infinite While Loop:
+
+	while(1){
+	}
+
+Infinite Do-While Loop:
+	
+	do{
+	}while(1);
 
 */
+
+/*
+23-write a program to print "hello world" without using a semicolon 
+Example:
+*/
+#include <stdio.h>
+void main(){
+	if (printf("hello world")){} // it prints the hello world on the screen
+}
+
+/*
+24-write a program to swap two numbers without using the third variable 
+Example:
+*/
+#include<stdio.h>
+#include<conio.h>
+void main(){
+int a=10, b=20; // declaration of variables.
+clrscr(); //It clears the screen.
+printf("before swap a=%d b=%d", a, b);
+a= a+b; // a = 30 (10+20)
+b = a-b; // b = 10 (30-20)
+a = a-b; // a = 20 (39 - 10)
+printf("\nAfter swap a=%d b=%d,a,b);
+getch();
+}
 
 #Address mapping
 /*
