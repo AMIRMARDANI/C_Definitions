@@ -14,14 +14,62 @@ Example:
 */
 
 
-/*1-Volatile Variable.
+/*1-Volatile Variable:
 Introduction:
 The Volatile used to inform the compiler
 that the variable value can be changed any
 time without any task given by the source code.
+The compiler reloads the value from memory each time
+it's accessed by the program that means it prevents from
+cache a variable into a register.
+
+Using:
+The volatile keyword is mainly used where we directly
+deal with GPIO. interrupt or flag Register. It is also
+used with a global variable or buffer which shared
+between the threads. 
+
 Syntax:
 volatile data_type variable_name;
 volatile data_type *variable_name;
+
+1-1: What is the difference between the const and volatile qualifiers in C?
+1-1-1: constant keyword or variable:
+	the const keyword is compiler-enforced and says that
+	the program couldn't change the value of the object
+	that means it makes the object nonmodifiable type.
+	If we will try to modify the const value, we will getarccoords
+	the compiler error because const value is qualified with const
+	keyword that prevents to change the value of the const value
+	
+	Example:
+	
+	const int a = 0;
+	
+1-2: Can a variable be both constant and volatile:
+yes, as you know one of the great use of volatile and const
+keyword together is at the time accessing the GPIO registers.
+Volatile plays an important role and ensures that the compiler
+always read the value from the GPIO address and avoid to make any assumption.
+
+After using the volatile keyword to reading GPIO value, you
+will get the proper value whenever you are accessing the ports
+but still here is one more problem because the pointer is not 
+const type so it might be your program change the pointing
+address of the pointer. So we have to create a constant pointer
+with a volatile keyword.
+	
+Syntax:
+int volatile * const PortRegister;
+ |     |     |   |    |
+ |     |     |   |    +------> PortRegister is a
+ |     |     |   +-----------> constant
+ |     |     +---------------> pointer to a
+ |     +---------------------> volatile
+ +---------------------------> integer
+
+
+
 Example:
 */
 volatile int x;
@@ -783,7 +831,34 @@ void main()
 	}
 	getch();
 }
+/*
+26-print Fibonancci series with using recursion:
+Example:
+*/
+#include <stdio.h>
+#include <conio.h>
+void printFibonacci(int n) // function to calculate the fibonacci series of a given number
+{
+	static int n1=0,n2=1,n3; //declaration of static variables.
+	if (n>0){
+		n3 = n1 + n2;
+		n1=n2;
+		n2=n3;
+		printf("%d",n3);
+		printFibonacci(n-1); //calling the function recursively.
+	}
+}
+void main(){
+	int n;
+	clrcsr();
+	printf("Enter the number of elements");
+	scanf("%d",&n);
+	printf("Fibonancci Series:");
+	printf("%d%d",0,1);
+	printFibonacci(n-2);//n-2 because 2 numbers are already printed
+	getch();
 
+}
 #Address mapping
 /*
 please read below example about Address maping:
