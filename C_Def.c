@@ -1,18 +1,39 @@
 /*___C instruction___:
 Some instructions for C programming language
+www.amokh.ir // Autor: Amir Mardani
 */
 /*___List___:
 1-Volatile Variable.
 2-Void Pointer.
 3-Interrupt Latency.
+4-printf() and scanf() functions
+5-Difference between local variable and global variable
+6-Difference between call by value and call by reference
+7-Recursion
+8-array
+9-pointer
+10-NULL pointer
+11-far pointer
+12-dangling pointer
+13-pointer to pointer
+14-Static memory allocation
+15-Dynamic memory allocation
+16-structure
+17-union
+18-auto variable
+19-purpose of sprintf() function
+20-can we Compile program without main() function?
+21-command line argument
+22-difference between getch() and getche()
+23-difference between near, far and huge pointer
+24-typecasting
+25-Access the array using a pointer
+26-Infinite For Loop
+27-write a program to print "hello world" without using a semicolon
+28-write a program to swap two numbers without using the third variable
+29-print Fibonancci series without using recursion
+30-print Fibonancci series with using recursion
 */
-
-/*Template Name List.
-Introduction:
-Syntax:
-Example:
-*/
-
 
 /*1-Volatile Variable:
 Introduction:
@@ -69,11 +90,36 @@ int volatile * const PortRegister;
  +---------------------------> integer
 
 
+1-3: Can we have a volatile pointer:
+Yes, we can create it.
+//in bellow example piData is a volatile pointer to an integer.
+//piData is a volatile pointer to an integer.
+int *volatile piData;
 
-Example:
+Example1: Comertial use
 */
 volatile int x;
+//Example2: volatile pointer
 volatile int *a;
+
+//Example3: accessing the memory-mapped peripherals register or hardware status register:
+#define COM_STATUS_BIT 0x00000006
+uint32_t const volatile * const pStatusReg = (uint32_t*)0x00020000;
+
+uint32_t GetRecvData()
+{
+	uint32_t RecvData;
+	
+	while ((*pStatusRe) & COM_STATUS_BIT) == 0)
+	{
+		//Wait until flag does not set
+		//Recieved data in RecvData
+	}
+	
+	//
+}
+
+
 /*2-Void Pointer.
 Introduction:
 Till now, we have studied that the address assigned
@@ -171,7 +217,7 @@ int x2=20; //Local Variable
 }
 
 /*
-5- Difference between call by value and call by reference:
+6- Difference between call by value and call by reference:
 Description:
 Basic for comparision | Call by value   | Call by ref     |
 -----------------------------------------------------------
@@ -242,7 +288,7 @@ void change(int*x, int*y)
 ///value of b is: 17
 
 /*
-6-Recursion
+7-Recursion
 Description:
 When a function calls itself, so this process is known as recurion,
 the function that calls itself known as a recursive function
@@ -273,7 +319,7 @@ int calculate_fact(int a)
 ///factorial of a number is 120
 
 /*
-7-array
+8-array
 Description:
 An array is a group of similar types of elements.
 It has a contiguous memory location.
@@ -299,7 +345,7 @@ int main()
 ///1 2 3 4 5
 
 /*
-8-pointer
+9-pointer
 Description:
 a pointer is a variable that refers to the address of a value,
 whenever a variable is declared inside a program, then the systemallocates
@@ -329,7 +375,7 @@ int main()
 ///Address value of 'a' variable is 428781252
 
 /*
-9-NULL pointer
+10-NULL pointer
 Description:
 a pointer that doesn't refer to any address of value but NULL is known
 as a NULL pointer. When we assign a '0' value to a pointer of any type,
@@ -339,7 +385,7 @@ Example:
 int *p=NULL;
 
 /*
-9-far pointer
+11-far pointer
 Description:
 a pointer which can access all the 16 segments (whole residence memory)
 of RAM is known as far pointer. A far pointer is a 32-bit pointer that
@@ -348,7 +394,7 @@ Example:
 */
 
 /*
-10-dangling pointer
+12-dangling pointer
 Description:
 If a pointer is pointing any memory location, but meanwhile another pointer deletes
 the memory occupied by the first pointer while the first pointer still points to that
@@ -373,7 +419,7 @@ void main()
 }	
 
 /*
-11-pointer to pointer
+13-pointer to pointer
 Description:
 It means, one pointer refers to the address of another pointer.
 pointer to pointer is a chain of pointers, generally, the pointer
@@ -438,7 +484,7 @@ return 0;
 ///Value of **p variable is 50	
 
 /*
-12-Static memory allocation
+14-Static memory allocation
 Description:
 - in case of static memory allocation, memory is allocated at compile
   time, and memory can't be increased while executing the program.
@@ -454,7 +500,7 @@ Example:
 int a[10];
 
 /*
-13-Dynamic memory allocation
+15-Dynamic memory allocation
 Description:
  - in case of static memory allocation, memory is allocated at run
    time, and memory can be increased while executing the program.
@@ -483,7 +529,7 @@ int *p = malloc(sizeof(int)*10);
 
 
 /*
-14-structure
+16-structure
 Description:
 - the structure is a user-defined data type that allows
   storing multiple types of data in a single unit. It 
@@ -527,7 +573,7 @@ int main()
 ///Name and age of a student: Amir,26  
 
 /*
-15-union
+17-union
 Description:
 	-The union is a user-defined data type that allows sroting
 	multiple types of data in a single unit. However,
@@ -581,7 +627,7 @@ int main()
 ///value of ch is a  
 
 /*
-16-union
+18-union
 Description:
 In C, every local variable of a function is known as an automatic (auto) variable.
 variable. Variables which are declared inside the function block are known as a
@@ -593,7 +639,7 @@ Example:
 */
 
 /*
-16-purpose of sprintf() function
+19-purpose of sprintf() function
 Description:
 The sprintf() stands for "string print". The sprintf()
 function does not print the output on the console screen.
@@ -615,7 +661,7 @@ int main()
 ///-----> The output:
 ///value of n is 9
 /*
-17-can we Compile program without main() function?
+20-can we Compile program without main() function?
 Description:
 Yes, we can compile but it can't be executed.
 but if we use #define, we can compile and run a c program without
@@ -630,7 +676,7 @@ void start ()
 }
 
 /*
-18-command line argument
+21-command line argument
 Description:
 The argument passed to the main() function while executing
 the program is known as command line argument
@@ -641,7 +687,7 @@ main (int count, char *args[]){
 }
 
 /*
-19-difference between getch() and getche()
+22-difference between getch() and getche()
 Description:
 getch() function: reads a single character from the keyboard.
 It doesn't use any buffer, so entered data will not be 
@@ -674,7 +720,7 @@ int main()
 ///value of ch is a
 
 /*
-20-difference between near, far and huge pointer
+23-difference between near, far and huge pointer
 Description:
 A virtual address is composed of the selector and offset.
 
@@ -711,7 +757,7 @@ Example:
 */
 
 /*
-21-typecasting
+24-typecasting
 Description:
 the typecasting is a process of converting one data type
 into another is known as typecasting. If we want to store
@@ -722,7 +768,7 @@ Syntax:
 */
 
 /*
-21-Access the array using a pointer
+25-Access the array using a pointer
 Description:
 By holding the base address of array into a pointer,
 we can access the array using a pointer
@@ -763,7 +809,7 @@ int main ()
 ///&p[3] = 0x7ffef151f3cc	 p[3] = 16
 ///&p[4] = 0x7ffef151f3d0	 p[4] = 12
 /*
-22-Infinite For Loop
+26-Infinite For Loop
 Description:
 Infinite For Loop:
 
@@ -783,7 +829,7 @@ Infinite Do-While Loop:
 */
 
 /*
-23-write a program to print "hello world" without using a semicolon 
+27-write a program to print "hello world" without using a semicolon 
 Example:
 */
 #include <stdio.h>
@@ -792,7 +838,7 @@ void main(){
 }
 
 /*
-24-write a program to swap two numbers without using the third variable 
+28-write a program to swap two numbers without using the third variable 
 Example:
 */
 #include<stdio.h>
@@ -809,7 +855,7 @@ getch();
 }
 
 /*
-25-print Fibonancci series without using recursion:
+29-print Fibonancci series without using recursion:
 Example:
 */
 #include <stdio.h>
@@ -832,7 +878,7 @@ void main()
 	getch();
 }
 /*
-26-print Fibonancci series with using recursion:
+30-print Fibonancci series with using recursion:
 Example:
 */
 #include <stdio.h>
