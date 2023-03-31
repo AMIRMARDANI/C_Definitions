@@ -33,6 +33,7 @@ www.amokh.ir // Autor: Amir Mardani
 28-write a program to swap two numbers without using the third variable
 29-print Fibonancci series without using recursion
 30-print Fibonancci series with using recursion
+31-pointer using examples
 */
 
 /*1-Volatile Variable:
@@ -59,7 +60,7 @@ volatile data_type *variable_name;
 	the const keyword is compiler-enforced and says that
 	the program couldn't change the value of the object
 	that means it makes the object nonmodifiable type.
-	If we will try to modify the const value, we will getarccoords
+	If we will try to modify the const value, we will get
 	the compiler error because const value is qualified with const
 	keyword that prevents to change the value of the const value
 	
@@ -93,7 +94,6 @@ int volatile * const PortRegister;
 1-3: Can we have a volatile pointer:
 Yes, we can create it.
 //in bellow example piData is a volatile pointer to an integer.
-//piData is a volatile pointer to an integer.
 int *volatile piData;
 
 Example1: Comertial use
@@ -146,7 +146,7 @@ p = fp; //incorrect
 fp = &i //incorrect
 ptr = p; //correct
 ptr = fp;//correct
-ptr = &i;
+ptr = &i;//correct
 
 /*3-Interrupt Latency.
 Introduction:
@@ -905,6 +905,29 @@ void main(){
 	getch();
 
 }
+
+
+/*
+31-pointer using examples
+Example:
+*/
+//below line declares a pointer of type uint32_t*, but the pointer
+//is uninitialized, that is, the pointer does not to anywhere in particular.
+//Trying to access memory through that pointer will cause undefined behaviour
+// and your program might crash
+uint32_t* ptr;
+//below line is just a variable of type uint32_t
+uint32_t num;
+//in below line: ptr+num returns you a new pointer. It called pointer arithmetic.
+//it's like regular arithmetic, only that compiler takes the size of type
+//into consideration. think of ptr+num as the memory address based on
+//original ptr pointer plus the number of bytes for nume uint32_t objects.
+//The (uint32_t*) is a cast
+*(uint32_t*)(ptr+num);
+
+
+
+
 #Address mapping
 /*
 please read below example about Address maping:
